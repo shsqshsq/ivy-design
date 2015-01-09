@@ -28,5 +28,19 @@
 
 		return IvyContext;
 	});
+	
+
+	define('ivy-utils', function() {
+		return {
+			setDrawingState : function(ctx, state) {
+				var drawingState = state || {};
+				for ( var key in drawingState) {
+					if (drawingState.hasOwnProperty(key)) {
+						ctx[key] = drawingState[key];
+					}
+				}
+			}
+		};
+	});
 
 }(window));
