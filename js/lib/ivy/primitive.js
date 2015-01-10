@@ -11,22 +11,31 @@
 			if (!ctx) {
 				return;
 			}
-			var settings = this.settings, begin = settings.begin, end = settings.end;
+			var settings = this.settings, 
+				state = settings.state,
+				keepState = settings.keepState,
+				begin = settings.begin, 
+				end = settings.end;
 			if (!begin) {
 				throw 'line must have a begin point';
 			}
 			if (!end) {
 				throw 'line must have an end point';
 			}
-			ctx.save();
-			ivyUtil.setDrawingState(ctx, this.settings.state);
+			
+			if(!keepState){
+				ctx.save();
+			}
+			ivyUtil.setDrawingState(ctx, state);
 			
 			ctx.beginPath();
 			ctx.moveTo(begin.x, begin.y);
 			ctx.lineTo(end.x, end.y);
 			ctx.stroke();
 			
-			ctx.restore();
+			if(!keepState){
+				ctx.restore();
+			}
 		};
 
 		return IvyLine;
@@ -41,7 +50,8 @@
 				return;
 			}
 			
-			var setting = this.setting,
+			var setting = this.settings,
+				keepState = setting.keepState,
 				center = setting.center,
 				x = center ? center.x : undefined,
 				y = center ? center.y: undefined,
@@ -61,14 +71,18 @@
 				throw 'wrong config for ivy arc';
 			}
 			
-			ctx.save();
+			if(!keepState){
+				ctx.save();
+			}
 			ivyUtil.setDrawingState(ctx, this.settings.state);
 			
 			ctx.beginPath();
 			ctx.arc(x, y, radius, startAngle, endAngle, counterClockwise);
 			ctx.lineWidth = 15;
 			
-			ctx.restore();
+			if(!keepState){
+				ctx.restore();
+			}
 		};
 
 		return IvyArc;

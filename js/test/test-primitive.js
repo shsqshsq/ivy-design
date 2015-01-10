@@ -29,7 +29,8 @@
 			},
 			state: {
 				strokeStyle: 'red'
-			}
+			},
+			keepState: true
 		});
 		
 		ivyCtx.append(ivyLine2);
