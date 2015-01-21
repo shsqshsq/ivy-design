@@ -1,46 +1,7 @@
 /*
- * IvyLine
+ * IvyArc
  */
-(function() {
-	define('ivy-line', ['ivy-utils'], function(ivyUtil) {
-		var IvyLine = function(settings) {
-			this.settings = settings || {};
-		};
-
-		IvyLine.prototype.draw = function(ctx) {
-			if (!ctx) {
-				return;
-			}
-			var settings = this.settings, 
-				state = settings.state,
-				keepState = settings.keepState,
-				begin = settings.begin, 
-				end = settings.end;
-			if (!begin) {
-				throw 'line must have a begin point';
-			}
-			if (!end) {
-				throw 'line must have an end point';
-			}
-			
-			if(!keepState){
-				ctx.save();
-			}
-			ivyUtil.setDrawingState(ctx, state);
-			
-			ctx.beginPath();
-			ctx.moveTo(begin.x, begin.y);
-			ctx.lineTo(end.x, end.y);
-			ctx.stroke();
-			
-			if(!keepState){
-				ctx.restore();
-			}
-		};
-
-		return IvyLine;
-	});
-	
+(function() {	
 	define('ivy-arc', ['ivy-utils'], function(ivyUtil){
 		var IvyArc = function(settings) {
 			this.settings = settings || {};
@@ -53,8 +14,8 @@
 			var setting = this.settings,
 				keepState = setting.keepState,
 				center = setting.center,
-				x = center ? center.x : undefined,
-				y = center ? center.y: undefined,
+				x = center ? center.x || 0 : undefined,
+				y = center ? center.y || 0: undefined,
 				radius = setting.radius,
 				startAngle = setting.startAngle ? setting.startAngle : Math.PI,
 				endAngle = setting.endAngle ? setting.endAngle : 0,
@@ -64,11 +25,16 @@
 				endPoint = setting.endPoint;
 			
 			if (center) {
-				
+				if (!radius) {
+					throw new Error('arc must have a radius');
+				}				
 			} else if (startPoint && endPoint) {
+				if (!height) {
+					throw new Error('arc must have a height');
+				}
 				
 			} else {
-				throw 'wrong config for ivy arc';
+				throw new Error('wrong config for arc');
 			}
 			
 			if(!keepState){
@@ -78,7 +44,7 @@
 			
 			ctx.beginPath();
 			ctx.arc(x, y, radius, startAngle, endAngle, counterClockwise);
-			ctx.lineWidth = 15;
+			ctx.stroke();
 			
 			if(!keepState){
 				ctx.restore();
@@ -88,5 +54,3 @@
 		return IvyArc;
 	});
 }());
-
-
