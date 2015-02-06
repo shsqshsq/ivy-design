@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Coordinate</title>
+<style>
+canvas{
+	margin: 20px;
+}
+</style>
+</head>
+<body>
+	<canvas id="ivy-canvas" width="800" height="600"></canvas>
+	<script type="text/javascript" src="../js/lib/3rdparty/require.js"></script>
+	<script type="text/javascript" src="../js/lib/ivy/core/core.js"></script>
+	<script type="text/javascript" src="../js/lib/ivy/graph/coordinate.js"></script>
+	<script type="text/javascript" src="../js/lib/ivy/primitive/oval.js"></script>
+	<script type="text/javascript">
+	require(['ivy', 'ivy-coordinate', 'ivy-oval'], function(Ivy, IvyCoordinate, IvyOval){
+		var ivyCtx = new Ivy('ivy-canvas');
+
+		var coordinate = new IvyCoordinate({
+			xaxis: 800,
+			yaxis: 600
+		});
+		ivyCtx.append(coordinate);
+
+		// start and end point oval
+		var oval1 = new IvyOval({
+			begin: {
+				x: 50,
+				y: 50
+			},
+			end: {
+				x: 250,
+				y: 150
+			},
+			depth: 50,
+			state: {
+				strokeStyle: 'yellow'
+			}
+		});
+		ivyCtx.append(oval1);
+
+		// center oval
+		var oval2 = new IvyOval({
+			center: {
+				x: 550,
+				y: 250
+			},
+			width: 300,
+			height: 120,
+			state: {
+				strokeStyle: 'green'
+			}
+		});
+		ivyCtx.append(oval2);
+
+		// rect box oval
+		var oval3 = new IvyOval({
+			corner: {
+				x: 150,
+				y: 400
+			},
+			width: 300,
+			height: 120,
+			state: {
+				strokeStyle: 'red'
+			}
+		});
+		ivyCtx.append(oval3);
+
+		ivyCtx.draw();
+	});
+
+	</script>
+</body>
+</html>

@@ -59,8 +59,8 @@
 				w = settings.width;
 				h = settings.height;
 			} else if(settings.center && settings.width && settings.height){
-				x = settings.corner.x - settings.width/2;
-				y = settings.corner.y - settings.height/2;
+				x = settings.center.x - settings.width/2;
+				y = settings.center.y - settings.height/2;
 				w = settings.width;
 				h = settings.height;
 			} else if (settings.begin && settings.end && settings.depth) {

@@ -25,8 +25,8 @@
 				longMark = settings.longMark || 8,
 				shortMark = settings.shortMark || 5,
 				axisColor = settings.axisColor || 'red',
-				longMarkColor = settings.longMarkColor || 'green',
-				shortMarkColor = settings.shortMarkColor || 'purple',
+				longMarkColor = settings.longMarkColor || 'purple',
+				shortMarkColor = settings.shortMarkColor || 'green',
 				gridLineColor = settings.gridLineColor || '#efefef';
 			
 			ctx.save();
@@ -52,7 +52,7 @@
 				ctx.beginPath();
 				ctx.strokeStyle = gridLineColor;
 				ctx.moveTo(stepX, origin.y);
-				ctx.lineTo(stepX, yaxis);
+				ctx.lineTo(stepX, origin.y + yaxis);
 				ctx.stroke();
 
 				var subStepStart = stepX - step;

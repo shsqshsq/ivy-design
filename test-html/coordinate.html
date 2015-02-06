@@ -6,11 +6,12 @@
 <style>
 canvas{
 	margin: 20px;
+	border: 1px solid #000;
 }
 </style>
 </head>
 <body>
-	<canvas id="ivy-canvas" width="600" height="600"></canvas>
+	<canvas id="ivy-canvas" width="800" height="600"></canvas>
 	<script type="text/javascript" src="../js/lib/3rdparty/require.js"></script>
 	<script type="text/javascript" src="../js/lib/ivy/core/core.js"></script>
 	<script type="text/javascript" src="../js/lib/ivy/graph/coordinate.js"></script>
@@ -22,7 +23,9 @@ canvas{
 			origin: {
 				x: 13, 
 				y: 10
-			}
+			},
+			xaxis: 750,
+			yaxis: 450
 		});
 		ivyCtx.append(coordinate);
 		ivyCtx.draw();
