@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Coordinate</title>
+<style>
+canvas{
+	margin: 20px;
+}
+</style>
+</head>
+<body>
+	<canvas id="ivy-canvas" width="600" height="600"></canvas>
+	<script type="text/javascript" src="../js/lib/3rdparty/require.js"></script>
+	<script type="text/javascript" src="../js/lib/ivy/core/core.js"></script>
+	<script type="text/javascript" src="../js/lib/ivy/graph/coordinate.js"></script>
+	<script type="text/javascript">
+	require(['ivy', 'ivy-coordinate'], function(Ivy, IvyCoordinate){
+		var ivyCtx = new Ivy('ivy-canvas');
+
+		var coordinate = new IvyCoordinate({
+			origin: {
+				x: 13, 
+				y: 10
+			}
+		});
+		ivyCtx.append(coordinate);
+		ivyCtx.draw();
+	});
+
+	</script>
+</body>
+</html>

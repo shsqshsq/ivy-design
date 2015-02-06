@@ -1,5 +1,6 @@
 (function(){
-	require(['ivy', 'ivy-line', 'ivy-arc', 'ivy-bezier', 'ivy-quadratic'], function(Ivy, IvyLine, IvyArc, IvyBezier, IvyQuadratic){
+	require(['ivy', 'ivy-line', 'ivy-arc', 'ivy-bezier', 'ivy-quadratic', 'ivy-oval'], 
+			function(Ivy, IvyLine, IvyArc, IvyBezier, IvyQuadratic, IvyOval){
 		var ivyCtx = new Ivy('ivy-canvas');
 		var ivyLine1 = new IvyLine({
 			begin: {
@@ -94,6 +95,19 @@
 			}
 		});
 		ivyCtx.append(ivyQuadratic);
+
+		var ivyOval = new IvyOval({
+			begin: {
+				x: 100,
+				y: 80
+			},
+			end: {
+				x: 180,
+				y: 210
+			},
+			depth: 20
+		});
+		ivyCtx.append(ivyOval); 
 		
 		ivyCtx.draw();
 	});

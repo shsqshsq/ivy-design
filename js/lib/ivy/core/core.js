@@ -43,4 +43,25 @@
 		};
 	});
 
+	define('ivy-math', function() {
+		return {
+			getDistance: function(start, end){
+				var xlen = start.x - end.x,
+					ylen = start.y - end.y;
+				return Math.sqrt( xlen*xlen + ylen*ylen );
+			},
+
+			getMiddlePoint: function(start, end){
+				return {
+					x: (start.x + end.x)/2,
+					y: (end.y + start.y)/2
+				}
+			},
+
+			getRadians: function(start, end){
+				return Math.atan((end.y - start.y)/(end.x - start.x));
+			}
+		}
+	});
+
 }(window));
