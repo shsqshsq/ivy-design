@@ -60,6 +60,14 @@
 
 			getRadians: function(start, end){
 				return Math.atan((end.y - start.y)/(end.x - start.x));
+			},
+
+			toRadians: function(degree){
+				return degree * (Math.PI/180);
+			},
+
+			toDegree: function(radian){
+				return radian * (180/Math.PI);
 			}
 		}
 	});
