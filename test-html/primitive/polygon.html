@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Oval</title>
+<style>
+canvas{
+	margin: 20px;
+}
+</style>
+</head>
+<body>
+	<canvas id="ivy-canvas" width="800" height="600"></canvas>
+	<script type="text/javascript" src="../../js/lib/3rdparty/require.js"></script>
+	<script type="text/javascript" src="../../js/lib/ivy/core/core.js"></script>
+	<script type="text/javascript" src="../../js/lib/ivy/graph/coordinate.js"></script>
+	<script type="text/javascript" src="../../js/lib/ivy/primitive/polygon.js"></script>
+	<script type="text/javascript">
+	require(['ivy', 'ivy-coordinate', 'ivy-polygon'], function(Ivy, IvyCoordinate, IvyPolygon){
+		var ivyCtx = new Ivy('ivy-canvas');
+
+		var coordinate = new IvyCoordinate({
+			xaxis: 800,
+			yaxis: 600
+		});
+		ivyCtx.append(coordinate);
+
+		// 3 polygon
+		var polygon3 = new IvyPolygon({
+			center: {
+				x: 400,
+				y: 500
+			},
+			radius: 50,
+			n: 3
+		});
+		ivyCtx.append(polygon3);
+
+		// 4 polygon
+		var polygon4 = new IvyPolygon({
+			center: {
+				x: 100,
+				y: 100
+			},
+			radius: 50,
+			n: 4
+		});
+		ivyCtx.append(polygon4);
+
+		// 5 polygon
+		var polygon5 = new IvyPolygon({
+			center: {
+				x: 300,
+				y: 300
+			},
+			radius: 50,
+			n: 5
+		});
+		ivyCtx.append(polygon5);
+
+		// 6 polygon
+		var polygon6 = new IvyPolygon({
+			center: {
+				x: 100,
+				y: 200
+			},
+			radius: 50,
+			n: 6
+		});
+		ivyCtx.append(polygon6);
+
+		ivyCtx.draw();
+	});
+
+	</script>
+</body>
+</html>

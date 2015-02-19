@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Rect</title>
+<style>
+canvas{
+	margin: 20px;
+}
+</style>
+</head>
+<body>
+	<canvas id="ivy-canvas" width="800" height="600"></canvas>
+	<script type="text/javascript" src="../../js/lib/3rdparty/require.js"></script>
+	<script type="text/javascript" src="../../js/lib/ivy/core/core.js"></script>
+	<script type="text/javascript" src="../../js/lib/ivy/graph/coordinate.js"></script>
+	<script type="text/javascript" src="../../js/lib/ivy/primitive/rect.js"></script>
+	<script type="text/javascript">
+	require(['ivy', 'ivy-coordinate', 'ivy-rect'], function(Ivy, IvyCoordinate, IvyRect){
+		var ivyCtx = new Ivy('ivy-canvas');
+
+		var coordinate = new IvyCoordinate({
+			xaxis: 800,
+			yaxis: 600
+		});
+		ivyCtx.append(coordinate);
+
+		// rect with begin point and rotate
+		var rect1 = new IvyRect({
+			begin: {
+				x: 50,
+				y: 50
+			},
+			width: 100,
+			height: 80,
+			rotate: 45,
+			state: {
+				fillStyle: 'black'
+			}
+		});
+		ivyCtx.append(rect1);
+
+		// rect with center point
+		var rect2 = new IvyRect({
+			center: {
+				x: 200,
+				y: 200
+			},
+			width: 100,
+			height: 50,
+			state: {
+				fillStyle: 'red'
+			}
+		});
+		ivyCtx.append(rect2);
+
+		// rect with center point and rotate
+		var rect3 = new IvyRect({
+			center: {
+				x: 300,
+				y: 300
+			},
+			width: 100,
+			height: 50,
+			rotate: 60,
+			state: {
+				fillStyle: 'red'
+			}
+		});
+		ivyCtx.append(rect3);
+
+		// rect with center point and border radius
+		var rect4 = new IvyRect({
+			center: {
+				x: 500,
+				y: 200
+			},
+			width: 200,
+			height: 250,
+			rotate: 45,
+			borderRadius: [25, 15, 10, 20],
+			state: {
+				fillStyle: 'green'
+			}
+		});
+		ivyCtx.append(rect4);
+
+		ivyCtx.draw();
+	});
+
+	</script>
+</body>
+</html>

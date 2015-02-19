@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Sofa-3</title>
+<style>
+canvas{
+	margin: 20px;
+}
+</style>
+</head>
+<body>
+	<canvas id="ivy-canvas" width="800" height="600"></canvas>
+	<script type="text/javascript" src="../../js/lib/3rdparty/require.js"></script>
+	<script type="text/javascript" src="../../js/lib/ivy/core/core.js"></script>
+	<script type="text/javascript" src="../../js/lib/ivy/graph/coordinate.js"></script>
+	<script type="text/javascript" src="../../js/lib/ivy/primitive/rect.js"></script>
+	<script type="text/javascript" src="../../js/lib/ivy/furniture/sofa/sofa-3.js"></script>
+	<script type="text/javascript">
+	require(['ivy', 'ivy-coordinate', 'ivy-sofa-3', 'ivy-rect'], function(Ivy, IvyCoordinate, IvySofa3, IvyRect){
+		var ivyCtx = new Ivy('ivy-canvas');
+
+		var coordinate = new IvyCoordinate({
+			xaxis: 800,
+			yaxis: 600
+		});
+		ivyCtx.append(coordinate);
+
+		// sofa-3 1
+		var sofa1 = new IvySofa3({
+			center: {
+				x: 300,
+				y: 100
+			},
+			width: 200,
+			height: 80
+		});
+		ivyCtx.append(sofa1);
+
+		// sofa1 guideline
+		var guideLineForSofa1 = new IvyRect({
+			center: {
+				x: 300,
+				y: 100
+			},
+			width: 200,
+			height: 80,
+			state: {
+				strokeStyle: 'grey',
+			}
+		});
+		ivyCtx.append(guideLineForSofa1);
+
+		// sofa-3 2
+		var sofa2 = new IvySofa3({
+			center: {
+				x: 300,
+				y: 300
+			},
+			width: 400,
+			height: 150
+		});
+		ivyCtx.append(sofa2);
+
+		// sofa2 guideline
+		var guideLineForSofa2 = new IvyRect({
+			center: {
+				x: 300,
+				y: 300
+			},
+			width: 400,
+			height: 150,
+			state: {
+				strokeStyle: 'grey',
+			}
+		});
+		ivyCtx.append(guideLineForSofa2);
+
+		ivyCtx.draw();
+	});
+
+	</script>
+</body>
+</html>
